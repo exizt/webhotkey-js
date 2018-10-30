@@ -1,33 +1,12 @@
-function shortcutKeyEvent(event)
+function shortcutKeyEvent(e)
 {
 	var container = this;
-	if(event.altKey && event.shiftKey){
+	var selectorPrefix = '.site-shortcut-key-';
+	if(e.altKey && e.shiftKey){
 		//console.log(event.keyCode);
-		switch(event.keyCode){
-			case 65: 
-				trigger(".site-shortcut-key-a");
-				break;
-			case 66: 
-				trigger(".site-shortcut-key-b");
-				break;
-			case 67: 
-				trigger(".site-shortcut-key-c");
-				break;
-			case 69: 
-				trigger(".site-shortcut-key-e"); 
-				break;
-			case 70: 
-				trigger(".site-shortcut-key-f"); 
-				break;
-			case 78: 
-				trigger(".site-shortcut-key-n"); 
-				break;
-			case 83: 
-				trigger(".site-shortcut-key-s"); 
-				break;
-			case 90: 
-				trigger(".site-shortcut-key-z"); 
-				break;
+		if(e.keyCode >=65 && e.keyCode <=90)
+		{
+			trigger(selectorPrefix + String.fromCharCode(e.keyCode).toLowerCase());
 		}
 	}
 	/**
