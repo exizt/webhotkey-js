@@ -2,20 +2,26 @@
 <html>
 <head>
 <meta charset="utf-8"> 
-<title>Sample</title>
-<script src="shortcut-key-event.js"></script>
+<title>jsHotKey Demo</title>
+<!--<script src="src/jshotkey.js"></script>-->
+<script src="dist/jshotkey.min.js"></script>
 <script>
-document.onkeyup = shortcutKeyEvent;
+
 </script>
 </head>
 <body>
-TEST<br>
+    TEST<br>
 
 
 
-Link Examples<br>
-<a href="links/a.htm" class="site-shortcut-key-a">A</a><br>
-<a href="links/b.htm" class="site-shortcut-key-b">B</a><br>
-<a href="links/c.htm" class="site-shortcut-key-c">C</a>
+    Link Examples<br>
+
+
+    <ul>
+        <li><a href="#" class="site-shortcut-key-a" onclick="event.preventDefault();alert('a')">A</a></li>
+        <li><a href="demo/b.htm" class="site-shortcut-key-b">B</a></li>
+        <li><a href="demo/c.htm" class="site-shortcut-key-c">C</a></li>
+        <li><a href="demo/d.htm" class="site-shortcut-key-d">D</a></li>
+    </ul>
 </body>
 </html>
