@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/exizt/shortcut-key-event.js.git"
+    "url": "git+https://github.com/exizt/jshotkey.git"
   },
   "author": "",
   "license": "MIT",
