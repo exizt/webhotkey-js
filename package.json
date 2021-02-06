@@ -1,8 +1,8 @@
 {
   "name": "jshotkey",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "웹사이트에서 shortcut key 를 구현하는 간단한 소스",
-  "main": "shortcut-key-event.js",
+  "main": "jshotkey.js",
   "scripts": {
     "build": "webpack"
   },

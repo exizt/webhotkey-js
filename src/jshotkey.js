@@ -3,14 +3,15 @@
 * Licensed under MIT
 */
 document.addEventListener("DOMContentLoaded",()=>{
-    var isDebug = false
 
     //window.onkeydown = shortcutKeyEvent
     window.addEventListener("keydown", hotkeyEvent)
 
-    var config = {
-        selectorPrefix : '.site-shortcut-key-'
+    const config = {
+        selectorPrefix : '.site-shortcut-key-',
+        isDebug : false
     }
+    
     /**
      * (사용법)
      * window.onkeydown = shortcutKeyEvent 과 같이 
@@ -26,7 +27,9 @@ document.addEventListener("DOMContentLoaded",()=>{
             {
                 e.preventDefault();// altkey 로 발생하는 이벤트 방지
                 if(validAltShift()){
-                    if(isDebug) console.log(String.fromCharCode(e.keyCode).toLowerCase())
+                    if(config.isDebug){ 
+                        console.log(String.fromCharCode(e.keyCode).toLowerCase()) 
+                    }
                     trigger(config.selectorPrefix + String.fromCharCode(e.keyCode).toLowerCase());
                 }
             }
