@@ -1,6 +1,10 @@
 /*! 
-* exizt/jshotkey
+* exizt/jshotkey 2.0.0
+* 
 * Licensed under MIT
+*      Git : https://github.com/exizt/jshotkey
+*   Author : EXIZT
+* Modified : 2021.02
 */
 document.addEventListener("DOMContentLoaded",()=>{
 
