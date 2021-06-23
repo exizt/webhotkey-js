@@ -11,6 +11,9 @@ MIT License
 
 # 사용법
 스크립트를 로드한 후. 
+```html
+<script src="./dist/jshotkey.min.js"></script>
+```
 
 `class="site-shortcut-key-a"` 와 같이 클래스를 지정하면, 해당 링크를 실행하거나 click 이벤트를 실행함.
 
