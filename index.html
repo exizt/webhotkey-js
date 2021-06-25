@@ -2,20 +2,18 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8"> 
-<title>jsHotKey Demo</title>
-<!--<script src="./src/jshotkey.js"></script>-->
-<script src="./dist/jshotkey.min.js"></script>
-<script>
-
-</script>
+<title>shAccessKey Demo</title>
+<!--<script src="./src/shAccessKey.js"></script>-->
+<!--<script type="module" src="./dist/shAccessKey.min.js"></script>-->
 </head>
+<script src="./dist/shAccessKey.js"></script>
+<script>
+    let shhotkey = new shAccessKey()
+</script>
+
 <body>
     TEST<br>
-
-
     Link Examples (Shift + Alt + 알파벳)<br>
-
-
     <ul>
         <li><a href="demo/a.htm" class="site-shortcut-key-a">A</a></li>
         <li><span class="site-shortcut-key-b" onclick="event.preventDefault();alert('b')">B</span></li>
