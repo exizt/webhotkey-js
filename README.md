@@ -31,3 +31,8 @@ let shhotkey = new shAccessKey({"selectorPrefix": '.my-key-'})
 # 데모
 
 https://exizt.github.io/jshotkey/
+
+
+# 브라우저 지원
+3 버전 이후로는 ie11 을 지원하지 않습니다.
+
