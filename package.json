@@ -1,10 +1,11 @@
 {
   "name": "jshotkey",
-  "version": "2.0.0",
-  "description": "웹사이트에서 shortcut key 를 구현하는 간단한 소스",
+  "version": "3.0.0",
+  "description": "웹브라우저에서 키보드 단축키를 구현하는 간단한 소스",
   "main": "jshotkey.js",
   "scripts": {
-    "build": "webpack"
+    "build": "tsc",
+    "minify": "npx uglifyjs ./dist/shAccessKey.js --output ./dist/shAccessKey.min.js --mangle"
   },
   "repository": {
     "type": "git",
@@ -14,14 +15,7 @@
   "license": "MIT",
   "homepage": "https://github.com/exizt/shortcut-key-event.js#readme",
   "devDependencies": {
-    "@babel/cli": "^7.14.5",
-    "@babel/core": "^7.14.6",
-    "@babel/preset-env": "^7.14.7",
-    "babel-loader": "^8.2.2",
-    "webpack": "^5.40.0",
-    "webpack-cli": "^4.7.2"
-  },
-  "dependencies": {
-    "core-js": "^3.15.1"
+    "typescript": "^4.3.4",
+    "uglify-js": "^3.13.9"
   }
 }
