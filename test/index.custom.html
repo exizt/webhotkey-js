@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"> 
+<title>shAccessKey Demo</title>
+<script src="../dist/shAccessKey.min.js"></script>
+<script>
+    const options = {
+        "selectorPrefix": '.my-key-'
+    }
+    let shhotkey = new shAccessKey(options)
+</script>
+</head>
+<body>
+    TEST<br>
+    Link Examples (Shift + Alt + 알파벳)<br>
+    <ul>
+        <li><a class="my-key-a" href="./links/a.html"></a>A</a></li>
+        <li><span class="my-key-b" onclick="event.preventDefault();alert('b')">B</span></li>
+        <li><a class="my-key-c" href="./links/c.html">C</a></li>
+        <li><a class="my-key-d" href="./links/d.html">D</a></li>
+    </ul>
+    <input type="text" class="my-key-e" placeholder="alt+shift+e 를 입력하면 포커스 위치">
+</body>
+</html>

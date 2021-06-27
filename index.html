@@ -2,24 +2,13 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8"> 
-<title>shAccessKey Demo</title>
-<!--<script src="./src/shAccessKey.js"></script>-->
-<!--<script type="module" src="./dist/shAccessKey.min.js"></script>-->
+<title>shAccessKey</title>
 </head>
-<script src="./dist/shAccessKey.min.js"></script>
-<script>
-    let shhotkey = new shAccessKey()
-</script>
-
 <body>
-    TEST<br>
-    Link Examples (Shift + Alt + 알파벳)<br>
     <ul>
-        <li><a href="demo/a.html" class="site-shortcut-key-a">A</a></li>
-        <li><span class="site-shortcut-key-b" onclick="event.preventDefault();alert('b')">B</span></li>
-        <li><a href="demo/c.html" class="site-shortcut-key-c">C</a></li>
-        <li><a href="demo/d.html" class="site-shortcut-key-d">D</a></li>
+        <li><a href="./test/index.html">단축키 테스트</a></li>
+        <li><a href="./test/index.custom.html">단축키 테스트 (옵셔널)</a></li>
+        <li><a href="./test/es5.html">ie11 테스트</a></li>
     </ul>
-    <input type="text" class="site-shortcut-key-e" placeholder="alt+shift+e 를 입력하면 포커스 위치">
 </body>
 </html>
