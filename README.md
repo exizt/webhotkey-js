@@ -34,5 +34,6 @@ https://exizt.github.io/jshotkey/
 
 
 # 브라우저 지원
-3 버전 이후로는 ie11 을 지원하지 않습니다.
+* shAccessKey(.min).js - ie11 미지원 버전. 최신 스크립트.
+* shAccessKey.es5(.min).js - ie11 지원 버전. es5로 빌드됨.
 

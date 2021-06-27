@@ -1,3 +1,10 @@
+/**
+ * shAccessKey 3.0.1
+ * 
+ * License : MIT
+ * Git : https://github.com/exizt/jshotkey
+ * Author : EXIzT
+ */
 class shAccessKey {
   private options = {
     "selectorPrefix": '.site-shortcut-key-',
@@ -5,15 +12,17 @@ class shAccessKey {
   }
 
   /**
-   * 생성자
+   * constructor
    * @param {json} options 
    */
   constructor(options?:JSON) {
     // this.options = options
     let opts = options || {}
-    Object.assign(this.options, opts)
 
-    // 키보드 이벤트 등록
+    // Object.assign(this.options, opts)
+    this.options = {...this.options, ... opts}
+
+    // add key Event
     window.addEventListener("keydown", (event) => this.hotkeyEvent(event))
   }
 

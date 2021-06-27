@@ -1,11 +1,15 @@
 {
   "name": "jshotkey",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "웹브라우저에서 키보드 단축키를 구현하는 간단한 소스",
   "main": "jshotkey.js",
   "scripts": {
-    "build": "tsc",
-    "minify": "npx uglifyjs ./dist/shAccessKey.js --output ./dist/shAccessKey.min.js --mangle"
+    "build": "npm run tsc && npm run minify",
+    "build.legacy": "npm run tsc.legacy && npm run minify.legacy",
+    "tsc": "tsc",
+    "tsc.legacy": "tsc --project tsconfig.es5.json",
+    "minify": "npx uglifyjs ./dist/shAccessKey.js --output ./dist/shAccessKey.min.js --mangle",
+    "minify.legacy": "npx uglifyjs ./dist/shAccessKey.es5.js --output ./dist/shAccessKey.es5.min.js --mangle"
   },
   "repository": {
     "type": "git",
@@ -13,7 +17,7 @@
   },
   "author": "",
   "license": "MIT",
-  "homepage": "https://github.com/exizt/shortcut-key-event.js#readme",
+  "homepage": "https://github.com/exizt/jshotkey.js#readme",
   "devDependencies": {
     "typescript": "^4.3.4",
     "uglify-js": "^3.13.9"
