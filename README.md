@@ -20,6 +20,10 @@ let shhotkey = new shAccessKey()
 
 `class="site-shortcut-key-a"` 와 같이 클래스를 지정하면, 해당 링크를 실행하거나 click 이벤트를 실행함.
 
+## CDN
+* https://cdn.jsdelivr.net/gh/exizt/jshotkey@master/dist/shAccessKey.min.js
+* https://cdn.jsdelivr.net/gh/exizt/jshotkey@master/dist/shAccessKey.es5.min.js
+
 
 ## 옵션 변경
 ```js
