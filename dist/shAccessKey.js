@@ -1,6 +1,6 @@
 "use strict";
 /**
- * shAccessKey 3.0.2
+ * shAccessKey 3.0.3
  *
  * License : MIT
  * Git : https://github.com/exizt/jshotkey

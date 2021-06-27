@@ -10,9 +10,14 @@ MIT License
 
 
 # 사용법
-스크립트를 로드한 후. 
+## 최신 브라우저
+스크립트를 로드
 ```html
 <script src="./dist/shAccessKey.min.js"></script>
+```
+
+다음 코드를 추가
+```html
 <script>
 let shhotkey = new shAccessKey()
 </script>
@@ -20,7 +25,20 @@ let shhotkey = new shAccessKey()
 
 `class="site-shortcut-key-a"` 와 같이 클래스를 지정하면, 해당 링크를 실행하거나 click 이벤트를 실행함.
 
-## CDN
+## IE11 등을 지원하려면 (ES5)
+스크립트를 로드
+```html
+<script src="./dist/shAccessKey.es5.min.js"></script>
+```
+
+다음 코드를 추가
+```html
+<script>
+var shhotkey = new shAccessKey()
+</script>
+```
+
+## CDN 사용
 * https://cdn.jsdelivr.net/gh/exizt/jshotkey@master/dist/shAccessKey.min.js
 * https://cdn.jsdelivr.net/gh/exizt/jshotkey@master/dist/shAccessKey.es5.min.js
 
@@ -41,3 +59,4 @@ https://exizt.github.io/jshotkey/
 * shAccessKey(.min).js - ie11 미지원 버전. 최신 스크립트.
 * shAccessKey.es5(.min).js - ie11 지원 버전. es5로 빌드됨.
 
+ie10, ie9 는 확인되지 않음
