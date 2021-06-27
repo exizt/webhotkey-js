@@ -11,7 +11,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 /**
- * shAccessKey 3.0.1
+ * shAccessKey 3.0.2
  *
  * License : MIT
  * Git : https://github.com/exizt/jshotkey
