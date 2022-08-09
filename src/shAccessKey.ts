@@ -3,11 +3,11 @@ import { getKeyLowercaseByEvent, isAlphaNumericByEvent } from './keyboard'
 /**
  * shAccessKey 3.0.3
  * 
- * License : MIT
  * Git : https://github.com/exizt/jshotkey
- * Author : EXIzT
+ * license MIT
+ * author exizt
  */
-export class JSHotkey {
+export class shAccessKey {
     private options = {
         "selectorPrefix": '.site-hotkey-',
         "isDebug": false
@@ -36,7 +36,9 @@ export class JSHotkey {
 
         // 키보드 이벤트 리스너 등록
         if(this.isEnabled){
-            console.log(`${this.debugTag} is enabled`)
+            if (this.options.isDebug) {
+                console.log(`${this.debugTag} is enabled`)
+            }
             window.addEventListener("keydown", (event) => this.hotkeyEvent(event))
         }
     }

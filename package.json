@@ -6,11 +6,8 @@
   "scripts": {
     "build": "npm run webpack && npm run webpack.legacy",
     "build.minify": "npm run tsc && npm run minify",
-    "build.minify.legacy": "npm run tsc.legacy && npm run minify.legacy",
     "tsc": "tsc",
-    "tsc.legacy": "tsc --project tsconfig.es5.json",
     "minify": "npx uglifyjs ./dist/shAccessKey.js --output ./dist/shAccessKey.min.js --mangle",
-    "minify.legacy": "npx uglifyjs ./dist/shAccessKey.es5.js --output ./dist/shAccessKey.es5.min.js --mangle",
     "webpack": "npx webpack --mode production",
     "webpack.legacy": "npx webpack --config webpack.config.legacy.js --mode production"
   },
