@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8"> 
 <title>shAccessKey Demo</title>
-<script src="../dist/shAccessKey.min.js"></script>
+<script src="../dist/shAccessKey.js"></script>
 <script>
     const options = {
-        "selectorPrefix": '.my-key-'
+        "selectorPrefix": '.my-key-',
+        isDebug: true
     }
-    let shhotkey = new shAccessKey(options)
+    const shhotkey = new shAccessKey(options)
 </script>
 </head>
 <body>

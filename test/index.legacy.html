@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8"> 
 <title>shAccessKey Demo</title>
-<script src="../dist/shAccessKey.js"></script>
+<script src="../dist/shAccessKey.legacy.js"></script>
 <script>
-    const shhotkey = new shAccessKey({selectorPrefix: ".site-hotkey-", isDebug: true})
+    var shhotkey = new shAccessKey({selectorPrefix: ".site-hotkey-", isDebug: true})
 </script>
 </head>
 <body>
@@ -13,7 +13,7 @@
     Link Examples (Shift + Alt + 알파벳)<br>
     <ul>
         <li><a href="./links/a.html" class="site-hotkey-a">A</a></li>
-        <li><span class="site-shortcut-key-b" onclick="event.preventDefault();alert('b')">B (alert)</span></li>
+        <li><span class="site-hotkey-b" onclick="event.preventDefault();alert('b')">B (alert)</span></li>
         <li><a href="./links/c.html" class="site-hotkey-c">C</a></li>
         <li><a href="./links/d.html" class="site-hotkey-d">D</a></li>
     </ul>
