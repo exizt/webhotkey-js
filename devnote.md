@@ -27,3 +27,11 @@ es5 버전 (support ie11)
 버전 변경 시 같이 작업할 사항
 1. package.json 에서 버전 변경
 2. ts 코드 상단에서 버전 변경
+
+
+# 셋팅 과정
+npm 셋팅
+```shell
+npm install --save-dev typescript
+npm install --save-dev webpack webpack-cli ts-loader
+```

@@ -3,17 +3,19 @@
 <head>
 <meta charset="utf-8"> 
 <title>shAccessKey Demo</title>
-<script src="../dist/shAccessKey.min.js"></script>
-<script>
+<script src="../dist/shAccessKey.js"></script>
+<script type="module">
     const options = {
-        "selectorPrefix": '.my-key-'
+        "selectorPrefix": '.my-key-',
+        isDebug: true
     }
-    let shhotkey = new shAccessKey(options)
+    const shhotkey = new shAccessKey(options)
 </script>
 </head>
 <body>
-    TEST<br>
-    Link Examples (Shift + Alt + 알파벳)<br>
+    <h1>Hotkey Test (옵션 테스트)</h1>
+    <small>아래의 알파벳을 shift+alt 조합과 함께 누르면 동작됩니다.</small>
+    <p>Key Test (Shift + Alt + 알파벳)</p>
     <ul>
         <li><a class="my-key-a" href="./links/a.html"></a>A</a></li>
         <li><span class="my-key-b" onclick="event.preventDefault();alert('b')">B</span></li>
