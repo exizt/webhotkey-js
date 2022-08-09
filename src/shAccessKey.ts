@@ -1,7 +1,7 @@
 import { getKeyLowercaseByEvent, isAlphaNumericByEvent } from './keyboard'
 
 /**
- * shAccessKey 3.0.3
+ * shAccessKey 4.0.0
  * 
  * Git : https://github.com/exizt/jshotkey
  * license MIT
