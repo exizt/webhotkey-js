@@ -6,15 +6,9 @@
 
 # 빌드
 esnext 버전
-* `npm run build` : tsc + minify
-  * `npm run tsc` : ts -> js
-  * `npm run minify` : js -> min.js
-
-
-es5 버전 (support ie11)
-* `npm run build.legacy` : tsc (es5.js) + minify (es5.min.js)
-  * `npm run tsc.legacy` : ts -> es5.js
-  * `npm run minify.legacy` : es5.js -> es5.min.js
+* `npm run build` : js 생성 + legacy.js 생성
+  * `npm run webpack` : ts -> js
+  * `npm run webpack.legacy` : legacy.ts -> legacy.js
 
 
 # 버저닝
@@ -29,9 +23,18 @@ es5 버전 (support ie11)
 2. ts 코드 상단에서 버전 변경
 
 
-# 셋팅 과정
-npm 셋팅
-```shell
-npm install --save-dev typescript
-npm install --save-dev webpack webpack-cli ts-loader
-```
+# 프로젝트 셋팅
+1. `npm install` : `node_modules` 생성됨.
+
+
+# 프로젝트 구성 과정에서의 히스토리
+1. npm 셋팅
+    ```shell
+    npm install --save-dev typescript
+    npm install --save-dev webpack webpack-cli ts-loader
+    ```
+
+2. `tsconfig.json`설정. 
+    - `npx tsc --init` 또는 파일을 복사해옴
+
+3. `webpack.config.js` 복사 후 설정.
