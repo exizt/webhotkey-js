@@ -87,6 +87,7 @@ export class shAccessKey {
                 break
             default:
                 this.triggerClickEvent(el)
+                break
         }
     }
 
