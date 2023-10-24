@@ -1,24 +1,20 @@
 {
-  "name": "jshotkey",
-  "version": "4.0.0",
-  "description": "웹브라우저에서 키보드 단축키를 구현하는 간단한 소스",
-  "main": "jshotkey.js",
+  "name": "webhotkey-js",
+  "version": "5.0.9",
+  "description": "Functionality to Assign Shortcuts to Custom Attributes.",
+  "main": "webhotkey.js",
   "scripts": {
-    "build": "npm run webpack",
-    "build.minify": "npm run tsc && npm run minify",
-    "tsc": "tsc",
-    "minify": "npx uglifyjs ./dist/shAccessKey.js --output ./dist/shAccessKey.min.js --mangle",
+    "build": "tsc & npm run webpack",
     "webpack": "npx webpack --mode production"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/exizt/jshotkey.git"
+    "url": "git+https://github.com/exizt/accesskey-js.git"
   },
   "author": "",
   "license": "MIT",
-  "homepage": "https://github.com/exizt/jshotkey.js",
+  "homepage": "https://github.com/exizt/accesskey-js",
   "devDependencies": {
-    "ts-loader": "^9.3.1",
     "typescript": "^4.3.4",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"

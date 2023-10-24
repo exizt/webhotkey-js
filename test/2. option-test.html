@@ -2,24 +2,27 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8"> 
-<title>shAccessKey Demo</title>
+<title>MyAccessKey Demo</title>
 <script type="module">
-    import { shAccessKey } from '../dist/shAccessKey.js';
-    const accessKey = new shAccessKey({
-        selectorPrefix: ".site-hotkey-",
-        isDebug: true
+    import webHotKey from '../dist/WebHotKey.min.js';
+
+    webHotKey.setOptions({
+        isDebug: true,
+        attributeName: "myAccessKey"
     })
+
 </script>
 </head>
 <body>
-    <h1>Hotkey Test (모던 브라우저 테스트)</h1>
+    <h1>Accesskey Test</h1>
     <small>아래의 알파벳을 alt+shift 조합과 함께 누르면 동작됩니다.</small>
     <ul>
-        <li><a class="site-hotkey-a" href="./links/a.html">Link A</a> <kbd>(alt + shift + A)</kbd></li>
-        <li><span class="site-hotkey-b" onclick="event.preventDefault();alert('b')">Alert B </span><kbd>(alt + shift + B)</kbd></li>
-        <li><a class="site-hotkey-c" href="./links/c.html">C</a> <kbd>(alt + shift + C)</kbd></li>
-        <li><a class="site-hotkey-d" href="./links/d.html">D</a> <kbd>(alt + shift + D)</kbd></li>
+        <li><a myAccessKey="a" href="./child/a.html">Link A</a> <kbd>(alt + shift + A)</kbd></li>
+        <li><span myAccessKey="b" onclick="event.preventDefault();alert('b')">Alert B </span><kbd>(alt + shift + B)</kbd></li>
+        <li><a myAccessKey="c" href="./child/c.html">Link C</a> <kbd>(alt + shift + C)</kbd></li>
+        <li><a myAccessKey="d" href="./child/d.html">Link D</a> <kbd>(alt + shift + D)</kbd></li>
+        <li><a myAccessKey="e" href="#" onclick="console.log('press e')">Console.log E</a> <kbd>(alt + shift + E)</kbd></li>
     </ul>
-    <input class="site-hotkey-f" type="text" style="width:250px" placeholder="alt+shift+f 를 입력하면 포커스 위치">
+    <input myAccessKey="f" type="text" style="width:250px" placeholder="alt+shift+f 를 입력하면 포커스 위치">
 </body>
 </html>

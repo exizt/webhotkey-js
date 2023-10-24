@@ -1,46 +1,42 @@
 /**
- * shAccessKey 4.0.0
- * 
- * Git : https://github.com/exizt/jshotkey
+ * MyAccessKey 4.0.0
+ *
+ * Git : https://github.com/exizt/accesskey-js
  * license MIT
  * author exizt
  */
-export class shAccessKey {
-    private options = {
-        "selectorPrefix": '.site-hotkey-',
-        "isDebug": false
-    }
+export class WebHotKey {
+    private attributeName = "hotkey"
+    private isDebug = false
 
     /**
      * constructor
-     * @param {json} options 
+     * @param {json} options
      */
-    constructor(options?: JSON) {
-        // options의 값이 없을 수도 있으므로, null일 경우에 빈 오브젝트
-        const opts = options || {}
+    constructor(options?: IOptions) {
+        // 옵션값 지정
+        this.setOptions(options)
 
-        // 초기값과 옵션 파라미터의 병합
-        // Object.assign(this.options, opts)
-        this.options = { ...this.options, ...opts }
-        
+        // debug
         this.debug("loaded")
-        
+
         // 지원 여부 확인
         if ( !this.isSupported() ) {
             this.debug("not supported")
             return
         }
 
+        // 키 이벤트 바인딩
         window.addEventListener("keydown", (e) => this.handleKeyEvent(e))
     }
 
     /**
      * 알파벳, 숫자 한정으로 단축키가 동작되는 이벤트
-     * 
+     *
      * @param e 키보드 입력 이벤트
      * @param options 옵션값
      */
-    private handleKeyEvent(e: KeyboardEvent){
+    private handleKeyEvent(e: KeyboardEvent): void{
         // alt + shift 조합에 한정.
         if (e.altKey && e.shiftKey) {
             this.debug(e.key)
@@ -51,7 +47,7 @@ export class shAccessKey {
                 this.debug(`key (${key})`)
 
                 // 액션
-                this.handleElements(this.options.selectorPrefix + key);
+                this.handleElements(key.toString());
 
                 // 중복 액션 방지 or alt key 이벤트 방지.
                 e.preventDefault()
@@ -62,13 +58,14 @@ export class shAccessKey {
 
     /**
      * 태그에 따라서 분기시키는 메소드.
-     * 
+     *
      * querySelector를 통해 현재 요소의 태그명을 받아오고, 이에 따라 분기시킨다.
      * @param selector 요소의 selector
      * @returns void
      */
-    private handleElements(selector: string): void {
-        const el = document.querySelector(selector) as HTMLElement;
+    private handleElements(key: string): void {
+        const el = document.querySelector(`[${this.attributeName}="${key}"]`) as HTMLElement
+        // const el = document.querySelector(selector) as HTMLElement;
         if (el === null) return;
 
         switch (el.tagName.toLowerCase()) {
@@ -86,7 +83,7 @@ export class shAccessKey {
 
     /**
      * 기본으로는 click 이벤트를 발생
-     * @param element 
+     * @param element
      */
     private handleOtherElement(element: HTMLElement) {
         element.click()
@@ -113,9 +110,9 @@ export class shAccessKey {
      * input 태그의 경우에는 type 의 종류에 따라 분기.
      * focusing : 'text' 'search'
      * onclick : 그 외의 경우. 예) button, submit, reset 등
-     * 
-     * @param element 
-     * @returns 
+     *
+     * @param element
+     * @returns
      */
     private handleInputElement(element: HTMLElement) {
         const el = element as HTMLInputElement
@@ -130,7 +127,7 @@ export class shAccessKey {
     }
 
     /**
-     * 키보드로 입력한 값이 알파벳 또는 소문자인지 여부. 
+     * 키보드로 입력한 값이 알파벳 또는 소문자인지 여부.
      * 빠르게 체크를 해야하는 부분이므로, 코드의 시인성보다 성능상의 최적화에 중점을 둘 것.
      * @param e 키보드 이벤트
      * @returns boolean
@@ -146,8 +143,8 @@ export class shAccessKey {
         // key값(예:a~z,0~9)의 첫글자만 소문자화
         let _key = (key).toLowerCase()
         let _code = _key.charCodeAt(0)
-        if ( (_code >= 'a'.charCodeAt(0) && _code <= 'z'.charCodeAt(0)) 
-            || (_code >= '0'.charCodeAt(0) && _code <= '9'.charCodeAt(0)) 
+        if ( (_code >= 'a'.charCodeAt(0) && _code <= 'z'.charCodeAt(0))
+            || (_code >= '0'.charCodeAt(0) && _code <= '9'.charCodeAt(0))
         ){
             return _key
         }
@@ -155,7 +152,7 @@ export class shAccessKey {
     }
 
     /**
-     * 사용 가능한지 여부. 
+     * 사용 가능한지 여부.
      * @returns boolean
      */
     private isSupported(): boolean {
@@ -186,11 +183,25 @@ export class shAccessKey {
     }
 
     /**
+     * 옵션값 지정
+     * @param options 옵션값 JSON
+     */
+    private setOptions(options?:any): void {
+        if(!options) return
+        if(options.attributeName) {
+            this.attributeName = options.attributeName
+        }
+        if(options.isDebug) {
+            this.isDebug = options.isDebug
+        }
+    }
+
+    /**
      * 디버깅 로그
      * @param _args 디버깅 로그
      */
     private debug(..._args:any) {
-        if (!this.options.isDebug) return
+        if (!this.isDebug) return
         const tag = '[shAccessKey]'
         const args = _args.map((x: any) => {
             if(typeof x === 'object'){
@@ -201,4 +212,8 @@ export class shAccessKey {
         })
         console.log(tag, ...args)
     }
+}
+interface IOptions {
+    attributeName: string;
+    isDebug: boolean;
 }

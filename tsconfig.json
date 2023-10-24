@@ -1,6 +1,6 @@
 {
   "files": [
-    "src/shAccessKey.ts"
+    "src/WebHotKey.ts"
   ],
   "compilerOptions": {
     /* Basic Options */
@@ -9,7 +9,7 @@
     "module": "es2015",                               /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */
     "rootDir": "./src",                             /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
     
-    "outDir": "./dist",                              /* Redirect output structure to the directory. */
+    "outDir": "./src",                              /* Redirect output structure to the directory. */
 
     /* Strict Type-Checking Options */
     "strict": true,                                 /* Enable all strict type-checking options. */

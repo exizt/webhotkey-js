@@ -1,31 +1,28 @@
 /**
- * shAccessKey 4.0.0
+ * MyAccessKey 4.0.0
  *
- * Git : https://github.com/exizt/jshotkey
+ * Git : https://github.com/exizt/accesskey-js
  * license MIT
  * author exizt
  */
-export class shAccessKey {
+export class WebHotKey {
     /**
      * constructor
      * @param {json} options
      */
     constructor(options) {
-        this.options = {
-            "selectorPrefix": '.site-hotkey-',
-            "isDebug": false
-        };
-        // options의 값이 없을 수도 있으므로, null일 경우에 빈 오브젝트
-        const opts = options || {};
-        // 초기값과 옵션 파라미터의 병합
-        // Object.assign(this.options, opts)
-        this.options = Object.assign(Object.assign({}, this.options), opts);
+        this.attributeName = "hotkey";
+        this.isDebug = false;
+        // 옵션값 지정
+        this.setOptions(options);
+        // debug
         this.debug("loaded");
         // 지원 여부 확인
         if (!this.isSupported()) {
             this.debug("not supported");
             return;
         }
+        // 키 이벤트 바인딩
         window.addEventListener("keydown", (e) => this.handleKeyEvent(e));
     }
     /**
@@ -45,7 +42,7 @@ export class shAccessKey {
                     return;
                 this.debug(`key (${key})`);
                 // 액션
-                this.handleElements(this.options.selectorPrefix + key);
+                this.handleElements(key.toString());
                 // 중복 액션 방지 or alt key 이벤트 방지.
                 e.preventDefault();
             }
@@ -59,8 +56,9 @@ export class shAccessKey {
      * @param selector 요소의 selector
      * @returns void
      */
-    handleElements(selector) {
-        const el = document.querySelector(selector);
+    handleElements(key) {
+        const el = document.querySelector(`[${this.attributeName}="${key}"]`);
+        // const el = document.querySelector(selector) as HTMLElement;
         if (el === null)
             return;
         switch (el.tagName.toLowerCase()) {
@@ -172,11 +170,25 @@ export class shAccessKey {
         return false;
     }
     /**
+     * 옵션값 지정
+     * @param options 옵션값 JSON
+     */
+    setOptions(options) {
+        if (!options)
+            return;
+        if (options.attributeName) {
+            this.attributeName = options.attributeName;
+        }
+        if (options.isDebug) {
+            this.isDebug = options.isDebug;
+        }
+    }
+    /**
      * 디버깅 로그
      * @param _args 디버깅 로그
      */
     debug(..._args) {
-        if (!this.options.isDebug)
+        if (!this.isDebug)
             return;
         const tag = '[shAccessKey]';
         const args = _args.map((x) => {
