@@ -13,7 +13,8 @@
 
     /* Strict Type-Checking Options */
     "strict": true,                                 /* Enable all strict type-checking options. */
-
+    "removeComments": true,                           /* 코멘트 제거 여부 */
+    
     /* Module Resolution Options */
     "esModuleInterop": true,                        /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
 

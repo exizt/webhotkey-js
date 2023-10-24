@@ -1,12 +1,14 @@
 /**
  * MyAccessKey 4.0.0
  *
- * Git : https://github.com/exizt/accesskey-js
- * license MIT
- * author exizt
+ * @author exizt
+ * @license MIT
+ * @see https://github.com/exizt/accesskey-js
  */
 export class WebHotKey {
+    // 키를 지정한 html 속성 이름
     private attributeName = "hotkey"
+    // 디버깅 유무
     private isDebug = false
 
     /**
@@ -40,6 +42,7 @@ export class WebHotKey {
         // alt + shift 조합에 한정.
         if (e.altKey && e.shiftKey) {
             this.debug(e.key)
+
             // 알파벳, 숫자 한정으로 동작
             let key = this.getAlphaNumericKey(e.key)
             if ( key !== false ) {
@@ -65,7 +68,6 @@ export class WebHotKey {
      */
     private handleElements(key: string): void {
         const el = document.querySelector(`[${this.attributeName}="${key}"]`) as HTMLElement
-        // const el = document.querySelector(selector) as HTMLElement;
         if (el === null) return;
 
         switch (el.tagName.toLowerCase()) {
