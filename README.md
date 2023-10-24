@@ -5,6 +5,7 @@
 
 `shift` + `alt` + 영문자 로 단축키를 구성할 수 있다.
 
+- https://github.com/exizt/accesskey-js
 
 
 ## Usage
