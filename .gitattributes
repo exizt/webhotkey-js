@@ -1,0 +1,16 @@
+# autocrlf
+* text=auto
+
+# Don't diff
+package-lock.json text -diff
+*.min.js text -diff
+
+# ignore github repo languages
+*.html linguist-vendored
+
+# ignore github releases
+.vscode/ export-ignore
+package-lock.json export-ignore
+tsconfig.json export-ignore
+webpack.config.js export-ignore
+devnote.md export-ignore
