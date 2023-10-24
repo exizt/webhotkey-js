@@ -1,5 +1,3 @@
-import { getKeyLowercaseByEvent, isAlphaNumericByEvent } from './keyboard'
-
 /**
  * shAccessKey 4.0.0
  * 
@@ -12,8 +10,6 @@ export class shAccessKey {
         "selectorPrefix": '.site-hotkey-',
         "isDebug": false
     }
-    private isEnabled = false
-    private debugTag = '[jshotkey]'
 
     /**
      * constructor
@@ -26,67 +22,64 @@ export class shAccessKey {
         // 초기값과 옵션 파라미터의 병합
         // Object.assign(this.options, opts)
         this.options = { ...this.options, ...opts }
-
-        if (this.options.isDebug) {
-            console.log(`${this.debugTag} is loaded ${this.options}`)
+        
+        this.debug("loaded")
+        
+        // 지원 여부 확인
+        if ( !this.isSupported() ) {
+            this.debug("not supported")
+            return
         }
 
-        // 브라우저 사용 가능 여부를 체크해서 허용 여부 결정
-        this.isEnabled = this.isAvailable()
-
-        // 키보드 이벤트 리스너 등록
-        if(this.isEnabled){
-            if (this.options.isDebug) {
-                console.log(`${this.debugTag} is enabled`)
-            }
-            window.addEventListener("keydown", (event) => this.hotkeyEvent(event))
-        }
-    }
-
-    /**
-     * 키 이벤트
-     * @param {event} e 키 이벤트
-     */
-    hotkeyEvent(e: KeyboardEvent) {
-        // console.log(this.options)
-        if (e.altKey && e.shiftKey) {
-            this.triggerEvent(e, this.options)
-        }
+        window.addEventListener("keydown", (e) => this.handleKeyEvent(e))
     }
 
     /**
      * 알파벳, 숫자 한정으로 단축키가 동작되는 이벤트
+     * 
      * @param e 키보드 입력 이벤트
      * @param options 옵션값
      */
-    triggerEvent(e: KeyboardEvent, options:{selectorPrefix:string}){
-        // 알파벳, 숫자 한정으로 동작
-        if (isAlphaNumericByEvent(e)) {
-            e.preventDefault();// altkey 로 발생하는 이벤트 방지
-            if (this.options.isDebug) {
-                console.log(`${this.debugTag} is AlphaNumeric. key (${getKeyLowercaseByEvent(e)})`)
+    private handleKeyEvent(e: KeyboardEvent){
+        // alt + shift 조합에 한정.
+        if (e.altKey && e.shiftKey) {
+            this.debug(e.key)
+            // 알파벳, 숫자 한정으로 동작
+            let key = this.getAlphaNumericKey(e.key)
+            if ( key !== false ) {
+                if(e.defaultPrevented) return
+                this.debug(`key (${key})`)
+
+                // 액션
+                this.handleElements(this.options.selectorPrefix + key);
+
+                // 중복 액션 방지 or alt key 이벤트 방지.
+                e.preventDefault()
             }
-            this.trigger(options.selectorPrefix + getKeyLowercaseByEvent(e));
         }
+        return
     }
 
     /**
-     * case 1) anchor 태그이면, href 로 이동시킨다.
-     * case 2) 일반 태그 이면 click 이벤트를 동작시킨다.
+     * 태그에 따라서 분기시키는 메소드.
+     * 
+     * querySelector를 통해 현재 요소의 태그명을 받아오고, 이에 따라 분기시킨다.
+     * @param selector 요소의 selector
+     * @returns void
      */
-    trigger(selector: string) {
+    private handleElements(selector: string): void {
         const el = document.querySelector(selector) as HTMLElement;
         if (el === null) return;
 
         switch (el.tagName.toLowerCase()) {
             case 'a':
-                this.triggerAnchorElement(el)
+                this.handleAnchorElement(el)
                 break
             case 'input':
-                this.triggerInputElement(el)
+                this.handleInputElement(el)
                 break
             default:
-                this.triggerClickEvent(el)
+                this.handleOtherElement(el)
                 break
         }
     }
@@ -95,7 +88,7 @@ export class shAccessKey {
      * 기본으로는 click 이벤트를 발생
      * @param element 
      */
-    triggerClickEvent(element: HTMLElement) {
+    private handleOtherElement(element: HTMLElement) {
         element.click()
     }
 
@@ -103,7 +96,7 @@ export class shAccessKey {
      * a 태그의 경우에는 location 처리
      * @param element
      */
-    triggerAnchorElement(element: HTMLElement) {
+    private handleAnchorElement(element: HTMLElement) {
         const el = element as HTMLAnchorElement
         const href = el.getAttribute('href') || '';
         if (href == '#') {
@@ -124,7 +117,7 @@ export class shAccessKey {
      * @param element 
      * @returns 
      */
-    triggerInputElement(element: HTMLElement) {
+    private handleInputElement(element: HTMLElement) {
         const el = element as HTMLInputElement
         if (['text', 'search', 'date', 'datetime-local', 'email', 'month', 'number', 'password', 'radio', 'range', 'tel', 'time', 'url', 'week'].indexOf(el.type) !== -1) {
             el.focus()
@@ -137,44 +130,75 @@ export class shAccessKey {
     }
 
     /**
-     * 사용 가능한지 여부. 스마트폰에서 단축키를 이용할 수 없으니 제외해야 함.
+     * 키보드로 입력한 값이 알파벳 또는 소문자인지 여부. 
+     * 빠르게 체크를 해야하는 부분이므로, 코드의 시인성보다 성능상의 최적화에 중점을 둘 것.
+     * @param e 키보드 이벤트
      * @returns boolean
      */
-    isAvailable(): boolean {
-        const simpleAgent = this.getSimpleBrowserAgent()
-        if (simpleAgent == "mobile") {
-            return false;
-        } else {
+    private getAlphaNumericKey(key: any): boolean|string {
+        // 지원되지 않는 경우.
+        if (typeof key === "undefined") return false
+
+        // 1글자만 키로 사용 가능
+        if(key.length != 1) return false
+
+        // key값(예:a~z,0~9,Alt,Control)에서 영문,숫자 입력만 필터링
+        // key값(예:a~z,0~9)의 첫글자만 소문자화
+        let _key = (key).toLowerCase()
+        let _code = _key.charCodeAt(0)
+        if ( (_code >= 'a'.charCodeAt(0) && _code <= 'z'.charCodeAt(0)) 
+            || (_code >= '0'.charCodeAt(0) && _code <= '9'.charCodeAt(0)) 
+        ){
+            return _key
+        }
+        return false
+    }
+
+    /**
+     * 사용 가능한지 여부. 
+     * @returns boolean
+     */
+    private isSupported(): boolean {
+
+        // 스마트폰에서 단축키를 이용할 수 없으니 제외함.
+        const isSupportedBrowser = !this.isMobileBrowser()
+        if (isSupportedBrowser) {
             return true;
+        } else {
+            return false;
         }
     }
 
     /**
-     * 간략하게 브라우저를 체크함
+     * 모바일 브라우저인지 확인.
      */
-    getSimpleBrowserAgent(): string {
+    private isMobileBrowser(): boolean {
         const agent = navigator.userAgent.toLowerCase();
+        // this.debug(agent)
         if (agent.match(/android/i)
             || agent.match(/webos/i)
             || agent.match(/iphone/i)
             || agent.match(/ipad/i)
         ) {
-            return 'mobile'
+            return true
         }
-        return ''
-        /*
-        if (agent.indexOf("msie") != -1) {    //익스플로러인지 체크
-            return 'ie'
-        }
-        if (agent.indexOf("chrome") != -1) {
-            return 'chrome'
-        }
-        if (agent.indexOf("safari") != -1) {
-            return 'safari'
-        }
-        if (agent.indexOf("firefox") != -1) {
-            return 'firefox'
-        }
-        */
+        return false
+    }
+
+    /**
+     * 디버깅 로그
+     * @param _args 디버깅 로그
+     */
+    private debug(..._args:any) {
+        if (!this.options.isDebug) return
+        const tag = '[shAccessKey]'
+        const args = _args.map((x: any) => {
+            if(typeof x === 'object'){
+                return JSON.parse(JSON.stringify(x))
+            } else {
+                return x
+            }
+        })
+        console.log(tag, ...args)
     }
 }

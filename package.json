@@ -4,12 +4,11 @@
   "description": "웹브라우저에서 키보드 단축키를 구현하는 간단한 소스",
   "main": "jshotkey.js",
   "scripts": {
-    "build": "npm run webpack && npm run webpack.legacy",
+    "build": "npm run webpack",
     "build.minify": "npm run tsc && npm run minify",
     "tsc": "tsc",
     "minify": "npx uglifyjs ./dist/shAccessKey.js --output ./dist/shAccessKey.min.js --mangle",
-    "webpack": "npx webpack --mode production",
-    "webpack.legacy": "npx webpack --config webpack.config.legacy.js --mode production"
+    "webpack": "npx webpack --mode production"
   },
   "repository": {
     "type": "git",
