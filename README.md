@@ -6,8 +6,6 @@
 
 `shift` + `alt` + 영문자 로 단축키를 구성할 수 있다.
 
-* Demo : https://exizt.github.io/jshotkey/
-
 
 ## Usage
 스크립트를 로드
