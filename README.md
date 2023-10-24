@@ -11,7 +11,7 @@
 ### Setup
 html
 ```html
-<script type="module" src="./dist/WebHotKey.min.js"></script>
+<script type="module" src="./dist/webhotkey.min.js"></script>
 ```
 
 or 
@@ -19,7 +19,7 @@ or
 
 ```html
 <script type="module">
-import webHotKey from '../dist/WebHotKey.min.js';
+import webHotKey from '../dist/webhotkey.min.js';
 </script>
 ```
 
@@ -44,7 +44,7 @@ import webHotKey from '../dist/WebHotKey.min.js';
 #### how to use
 example
 <script type="module">
-import webHotKey from '../dist/WebHotKey.min.js';
+import webHotKey from '../dist/webhotkey.min.js';
 
 webHotKey.setOptions({
     attributeName: "myAccessKey"

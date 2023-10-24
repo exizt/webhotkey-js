@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    'WebHotKey': path.resolve(__dirname, 'src/auto.js')
+    'webhotkey': path.resolve(__dirname, 'src/auto.js')
   },
   experiments: {
     outputModule: true,
