@@ -3,27 +3,11 @@
     "src/WebHotKey.ts"
   ],
   "compilerOptions": {
-    /* Basic Options */
-    /* (es3, es5, es6/es2015, es2016 ~ es2022, esnext) */
-    "target": "es2016",                             /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', 'ES2021', or 'ESNEXT'. */
-    "module": "es2015",                               /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */
-    "rootDir": "./src",                             /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
-    
-    "outDir": "./src",                              /* Redirect output structure to the directory. */
-
-    /* Strict Type-Checking Options */
-    "strict": true,                                 /* Enable all strict type-checking options. */
-    "removeComments": true,                           /* 코멘트 제거 여부 */
-    
-    /* Module Resolution Options */
-    "esModuleInterop": true,                        /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
-
-    /* Source Map Options */
-
-    /* Experimental Options */
-
-    /* Advanced Options */
-    "skipLibCheck": true,                           /* Skip type checking of declaration files. */
-    "forceConsistentCasingInFileNames": true        /* Disallow inconsistently-cased references to the same file. */
+    "target": "es2016",             /* 컴파일될 js에 관한 버전 설정 */
+    "module": "es2015",             /* 생성될 module import, export 방식 */
+    "rootDir": "./src",             /* 소스 파일의 root 경로 */
+    "strict": true,                 /* 엄격한 타입 검사 옵션 */
+    "removeComments": true,         /* 코멘트 제거 여부 */
+    "skipLibCheck": true,           /* .d.ts 파일의 유형 검사를 건너뜀. 컴파일 시간 단축 */
   }
 }
