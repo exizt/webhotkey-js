@@ -11,9 +11,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/exizt/accesskey-js.git"
+    "url": "git+https://github.com/exizt/webhotkey-js.git"
   },
-  "homepage": "https://github.com/exizt/accesskey-js",
+  "homepage": "https://github.com/exizt/webhotkey-js",
   "devDependencies": {
     "typescript": "^4.3.4",
     "webpack": "^5.74.0",

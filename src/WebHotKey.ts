@@ -1,5 +1,5 @@
 /**
- * MyAccessKey
+ * WebHotKey
  *
  * @author exizt
  * @license MIT
@@ -204,7 +204,7 @@ export class WebHotKey {
      */
     private debug(..._args:any) {
         if (!this.isDebug) return
-        const tag = '[shAccessKey]'
+        const tag = '[WebHotKey]'
         const args = _args.map((x: any) => {
             if(typeof x === 'object'){
                 return JSON.parse(JSON.stringify(x))

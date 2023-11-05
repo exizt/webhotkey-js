@@ -5,7 +5,7 @@
 
 
 ## Setup
-1. git clone : `git clone git@github.com/accesskey-js`
+1. git clone : `git clone git@github.com:exizt/webhotkey-js.git`
 2. `npm install`
     - `node_modules` 생성 및 타입스크립트 환경 구성됨.
 3. run `index.html`

@@ -112,7 +112,7 @@ export class WebHotKey {
     debug(..._args) {
         if (!this.isDebug)
             return;
-        const tag = '[shAccessKey]';
+        const tag = '[WebHotKey]';
         const args = _args.map((x) => {
             if (typeof x === 'object') {
                 return JSON.parse(JSON.stringify(x));
