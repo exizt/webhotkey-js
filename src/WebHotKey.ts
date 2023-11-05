@@ -1,9 +1,9 @@
 /**
- * MyAccessKey 4.0.0
+ * MyAccessKey
  *
  * @author exizt
  * @license MIT
- * @see https://github.com/exizt/accesskey-js
+ * @see https://github.com/exizt/webhotkey-js
  */
 export class WebHotKey {
     // 키를 지정한 html 속성 이름

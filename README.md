@@ -31,8 +31,9 @@ import webHotKey from '../dist/webhotkey.min.js';
 ```
 
 ### CDN 사용
-* https://cdn.jsdelivr.net/gh/exizt/jshotkey@master/dist/shAccessKey.min.js
-* https://cdn.jsdelivr.net/gh/exizt/jshotkey@master/dist/shAccessKey.es5.min.js
+```html
+<script type="module" src="https://cdn.jsdelivr.net/gh/exizt/webhotkey-js@main/dist/webhotkey.min.js"></script>
+```
 
 
 ### Customize
@@ -44,6 +45,7 @@ import webHotKey from '../dist/webhotkey.min.js';
 
 #### how to use
 example
+```html
 <script type="module">
 import webHotKey from '../dist/webhotkey.min.js';
 
@@ -51,6 +53,7 @@ webHotKey.setOptions({
     attributeName: "myAccessKey"
 })
 </script>
+```
 태그 속성 이름을 변경 지정할 수 있다.
 
 
