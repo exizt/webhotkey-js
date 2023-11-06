@@ -36,11 +36,12 @@
 $ npm install --save-dev typescript
 $ npm install --save-dev webpack webpack-cli
 ```
-- `typescript` : 타입스크립트 기능. `.ts` -> `.js`
-- `webpack`, `webpack-cli` : 웹팩 및 웹팩 cli. `.js` -> `.min.js`
+- `typescript` : TypeScript. `.ts` -> `.js`
+- `webpack`, `webpack-cli` : WebPack. `.js` -> `.min.js`
 
 
 ### config files
-1. `tsconfig.json`설정. 
-    - `npx tsc --init` 또는 파일을 복사해옴
-2. `webpack.config.js` 복사 후 설정.
+1. `package.json` : NPM configuration file.
+2. `tsconfig.json` : TypeScript configuration file.
+    - modified after running `npx tsc --init`.
+3. `webpack.config.js` : Webpack configuration file.

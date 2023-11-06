@@ -3,7 +3,7 @@
   "version": "5.0.10",
   "author": "exizt",
   "description": "Functionality to Assign Shortcuts to Custom Attributes.",
-  "main": "webhotkey.js",
+  "main": "dist/webhotkey.min.js",
   "license": "MIT",
   "scripts": {
     "build": "tsc & npm run webpack",
