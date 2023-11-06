@@ -1,9 +1,8 @@
 # WebHotKey JS
-> html의 `accesskey` 속성값이 있으면, 기본적으로 웹사이트에서 단축키를 사용할 수 있으나, 크롬 브라우저(alt+key)와 파이어폭스(alt+shift+key)의 방식이 다르다. 이런 점을 하나로 조율하기 위한 스크립트이다. 공통적으로 'alt+shift+key'로 동작되게 변경해준다.
+> The `accesskey` attribute in HTML allows for the use of keyboard shortcuts on websites by default. However, there is a difference in the shortcut key combinations between `Chrome (alt+key)` and `Firefox (alt+shift+key)`. The following script is designed to harmonize this discrepancy by setting a common behavior for both browsers, using `alt+shift+key` as the universal key combination.
 
-웹 사이트에서 단축키를 사용하기 위한 코드.
 
-`shift` + `alt` + 영문자 로 단축키를 구성할 수 있다.
+You can configure keyboard shortcuts using `shift` + `alt` + `alphanumeric`.
 
 - https://github.com/exizt/webhotkey-js
 
@@ -25,12 +24,12 @@ import webHotKey from '../dist/webhotkey.min.js';
 ```
 
 
-기본값으로 'hotkey' 속성을 가진 태그로 키보드 연결을 한다.
+By default, keyboard connectivity is established with a tag that has the 'hotkey' attribute.
 ```html
-<input hotkey="f" type="text" style="width:250px" placeholder="search (alt+shift+f)">
+<input hotkey="f" type="text" placeholder="search (alt+shift+f)">
 ```
 
-### CDN 사용
+### using CDN
 ```html
 <script type="module" src="https://cdn.jsdelivr.net/gh/exizt/webhotkey-js@main/dist/webhotkey.min.js"></script>
 ```
@@ -53,8 +52,9 @@ webHotKey.setOptions({
     attributeName: "myAccessKey"
 })
 </script>
+<input myAccessKey="f" type="text" placeholder="search (alt+shift+f)">
 ```
-태그 속성 이름을 변경 지정할 수 있다.
+
 
 
 ## License
