@@ -13,7 +13,8 @@
 
 ## Build
 * `npm run build` : tsc + npm run webpack
-    * `npm run webpack` : ts -> min.js (with minify)
+    * `tsc` : `src/*.ts` -> `src/*.js`
+    * `npm run webpack` : `src/WebHotKey.js` -> `dist/*.min.js` (minifying)
 
 
 ## Versioning
