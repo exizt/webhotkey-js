@@ -54,9 +54,3 @@ webHotKey.setOptions({
 </script>
 <input myAccessKey="f" type="text" placeholder="search (alt+shift+f)">
 ```
-
-
-
-## License
-
-MIT License
